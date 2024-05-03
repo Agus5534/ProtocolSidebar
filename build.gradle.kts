@@ -92,7 +92,7 @@ publishing {
                         email.set("catcoderr@gmail.com")
                     }
                 }
-                scm {
+                /*scm {
                     url.set("https://github.com/CatCoderr/ProtocolSidebar")
                     connection.set("scm:git:git://github.com:CatCoderr/ProtocolSidebar.git")
                     developerConnection.set("scm:git:ssh://github.com:CatCoderr/ProtocolSidebar.git")
@@ -100,12 +100,13 @@ publishing {
 
                 issueManagement {
                     url.set("https://github.com/CatCoderr/ProtocolSidebar/issues")
-                }
+                }*/
             }
         }
     }
 }
 
+/*
 nexusPublishing {
     repositories {
         sonatype()
@@ -120,7 +121,7 @@ signing {
 
     sign(publishing.publications["mavenJava"])
 }
-
+*/
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
