@@ -1,4 +1,4 @@
-VIA_VERSION=4.9.3
+VIA_VERSION=4.10.0
 
 ./gradlew clean shadowJar
 
