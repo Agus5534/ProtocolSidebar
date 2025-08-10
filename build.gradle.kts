@@ -109,6 +109,7 @@ publishing {
         }
     }
 
+    /*
     repositories {
         maven {
             name = "Snapshots"
@@ -118,9 +119,10 @@ publishing {
                 password = System.getenv("TOKEN")
             }
         }
-    }
+    }*/
 }
 
+/*
 signing {
     val signingKey = System.getenv("GPG_SECRET_KEY")
     val signingPassword = System.getenv("GPG_PASSPHRASE")
@@ -129,7 +131,7 @@ signing {
 
     sign(publishing.publications["mavenJava"])
 }
-
+*/
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
