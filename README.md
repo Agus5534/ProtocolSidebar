@@ -4,6 +4,16 @@
   <p align="center">Powerful feature-packed Minecraft scoreboard library</p>
     <p align="center">
 
+## Packet Info
+<div style="text-align: center;">
+
+| Version/Packet ID | Update Objective | Display Objective | Reset Score | Update Score | Update Team |
+|-------------------|------------------|-------------------|-------------|--------------|-------------|
+| 1.21-1.21.1       | 0x5E             | 0x57              | 0x45        | 0x61         | 0x60        |
+| 1.21.2-1.21.4     | 0x64             | 0x5C              | 0x49        | 0x68         | 0x67        |
+| 1.21.4-1.21.8     | 0x63             | 0x5B              | 0x48        | 0x67         | 0x66        |
+
+</div>
 <p align="center">
 <a target="_blank"><img src="https://github.com/CatCoderr/ProtocolSidebar/actions/workflows/build.yaml/badge.svg" alt="Build" /></a>
 <a target="_blank"><img src="https://img.shields.io/github/license/CatCoderr/ProtocolSidebar" alt="License" /></a>
