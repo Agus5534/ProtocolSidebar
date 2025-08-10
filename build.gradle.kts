@@ -1,28 +1,27 @@
 plugins {
     id("java-library")
     id("maven-publish")
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     id("signing")
 }
 
 group = "me.catcoder"
-version = "6.2.7-SNAPSHOT"
+version = "6.2.10-SNAPSHOT"
 description = "Powerful feature-packed Minecraft scoreboard library"
-
-extra["sonatypeUsername"] = System.getenv("SONATYPE_USERNAME")
-extra["sonatypePassword"] = System.getenv("SONATYPE_PASSWORD")
 
 val adventureVersion = "4.16.0"
 val paperVersion = "1.20.1-R0.1-SNAPSHOT"
-val viaVersionVersion = "4.8.1"
+val viaVersionVersion = "5.0.0"
+val viaNBTVersion = "5.0.2"
 val miniPlaceholdersVersion = "2.2.3"
 val lombokVersion = "1.18.30"
+val foliaLibVersion = "main-SNAPSHOT"
 
 allprojects {
     apply(plugin = "java-library")
 
     repositories {
         mavenLocal()
+        maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
         maven { url = uri("https://hub.spigotmc.org/nexus/content/groups/public/") }
         maven { url = uri("https://repo.dmulloy2.net/content/groups/public/") }
@@ -40,11 +39,13 @@ allprojects {
         compileOnly("io.papermc.paper:paper-api:${paperVersion}")
         testCompileOnly("io.papermc.paper:paper-api:${paperVersion}")
 
-        implementation("com.github.steveice10:opennbt:1.6")
+        implementation("com.viaversion:nbt:${viaNBTVersion}")
+        implementation("com.github.technicallycoded:FoliaLib:${foliaLibVersion}")
 
         compileOnly("org.projectlombok:lombok:${lombokVersion}")
         annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
 
+        compileOnly("com.viaversion:viaversion-common:${viaVersionVersion}")
         compileOnly("com.viaversion:viaversion-bukkit:${viaVersionVersion}")
 
         compileOnly("io.netty:netty-buffer:4.1.101.Final")
@@ -101,14 +102,20 @@ publishing {
                 issueManagement {
                     url.set("https://github.com/CatCoderr/ProtocolSidebar/issues")
                 }
+
             }
         }
     }
-}
 
-nexusPublishing {
     repositories {
-        sonatype()
+        maven {
+            name = "Snapshots"
+            url = uri("https://catcoder.pl.ua/snapshots")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
+        }
     }
 }
 
