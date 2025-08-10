@@ -52,8 +52,10 @@ public class ProtocolConstants {
 
     public static final int MINECRAFT_1_21_2 = 768;
 
+    public static final int MINECRAFT_1_21_5 = 770;
+
     public static final int MINIMUM_SUPPORTED_VERSION = MINECRAFT_1_12_2;
-    public static final int MAXIMUM_SUPPORTED_VERSION = MINECRAFT_1_21_2;
+    public static final int MAXIMUM_SUPPORTED_VERSION = MINECRAFT_1_21_5;
 
     @Getter
     @RequiredArgsConstructor
