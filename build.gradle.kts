@@ -67,7 +67,6 @@ allprojects {
 
 tasks.named<ShadowJar>("shadowJar") {
     minimize()
-    archiveClassifier.set("")
 }
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
@@ -82,9 +81,10 @@ publishing {
     publications {
 
         create<MavenPublication>("mavenJava") {
+            //from(components["java"])
 
-
-            artifact(tasks.named("shadowJar"))
+            artifact(javadocJar.get())
+            artifact(tasks["shadowJar"])
 
             // Provide artifacts information requited by Maven Central
             pom {
