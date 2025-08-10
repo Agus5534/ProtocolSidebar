@@ -1,7 +1,10 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id("java-library")
     id("maven-publish")
     id("signing")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "me.catcoder"
@@ -20,6 +23,7 @@ allprojects {
     apply(plugin = "java-library")
 
     repositories {
+        gradlePluginPortal()
         mavenLocal()
         maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
@@ -46,8 +50,8 @@ allprojects {
         compileOnly("org.projectlombok:lombok:${lombokVersion}")
         annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
 
-        compileOnly("com.viaversion:viaversion-common:${viaVersionVersion}")
-        compileOnly("com.viaversion:viaversion-bukkit:${viaVersionVersion}")
+        implementation("com.viaversion:viaversion-common:${viaVersionVersion}")
+        implementation("com.viaversion:viaversion-bukkit:${viaVersionVersion}")
 
         compileOnly("io.netty:netty-buffer:4.1.101.Final")
         compileOnly("io.netty:netty-handler:4.1.101.Final")
@@ -61,12 +65,14 @@ allprojects {
     }
 }
 
+tasks.named<ShadowJar>("shadowJar") {
+    minimize()
+}
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
 publishing {
-
     // Configure all publications
     publications {
 

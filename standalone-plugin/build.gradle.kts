@@ -5,11 +5,14 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
+
+
 dependencies {
     implementation(project(":"))
 }
 
 tasks.withType<ShadowJar> {
+    minimize()
     archiveFileName.set("ProtocolSidebar-${rootProject.version}.jar")
     relocate("com.tcoded.folialib", "me.catcoder.protocolsidebar.lib.folialib")
 
